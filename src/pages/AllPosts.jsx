@@ -9,6 +9,8 @@ function AllPosts() {
         appwriteService.getPosts().then((posts) => {
             if (posts) {
                 setPosts(posts.rows)
+            } else {
+                console.log("AllPosts :: Posts", posts)
             }
         })
     }, [])
@@ -24,7 +26,7 @@ function AllPosts() {
                         posts.map((post) => {
                             return (
                                 <div key={post.$id} className='p-2 w-1/4 '>
-                                    <PostCard post={post} />
+                                    <PostCard {...post} />
                                 </div>
                             )
                         }) : <h2 className='text-red-700'>No Posts Available</h2>
